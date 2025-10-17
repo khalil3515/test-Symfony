@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\GardenMohamedKhalilBenEzzine;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,8 +17,11 @@ class AddEditGardenMohamedKhalilBenEzzineType extends AbstractType
         $builder
             ->add('name')
             ->add('location')
-            ->add('status')
-            ->add('visitDate', DateType::class, [  // ← CHANGEMENT ICI
+            ->add('status', CheckboxType::class, [  // ← CHANGEMENT ICI
+                'label' => 'Status ',
+                'required' => false,
+            ])
+            ->add('visitDate', DateType::class, [
                 'widget' => 'single_text',
                 'html5' => true,
             ])
