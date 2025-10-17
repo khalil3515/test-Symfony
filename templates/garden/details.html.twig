@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Garden Details!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Garden Details</h1>
+    {% if garden is not null %}
+        <div>
+            <p><b>Name : </b> {{ garden.name }} </p>
+            <p><b>Location : </b> {{ garden.location }} </p>
+            <p><b>Status : </b> {{ garden.status ? 'Open' : 'Closed' }} </p>
+            <p><b>Visit Date : </b> {{ garden.visitDate | date('d-m-Y') }} </p>
+            <hr>
+        </div>
+    {% else %}
+        <p>No garden found.</p>
+    {% endif %}
+    <div>
+        <a href="{{path('app_garden_list')}}">Return To List!</a>
+    </div>
+</div>
+{% endblock %}
